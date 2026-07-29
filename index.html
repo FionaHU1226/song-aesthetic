@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e9e0cc" />
+    <meta name="description" content="An interactive digital handscroll exploring Song dynasty aesthetics, blue-green mountains and swallows in flight." />
+    <title>Swallows Across a Thousand Miles — Song Aesthetics</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <canvas id="inkTrail" aria-hidden="true"></canvas>
+    <div class="cursor" aria-hidden="true"><span>DRAG</span><i></i></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="page-meter" aria-hidden="true"><span></span><b>OPENING</b><i>00</i></div>
+
+    <header class="site-header">
+      <a class="brand magnetic" href="#top" aria-label="Back to the beginning">
+        <span class="brand-mark">S</span>
+        <span>THOUSAND MILES</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a class="magnetic" href="#scroll">The Scroll</a>
+        <a class="magnetic" href="#spirit">The Spirit</a>
+        <a class="magnetic" href="#colophon">Colophon</a>
+      </nav>
+      <button class="sound-toggle magnetic" type="button" aria-pressed="false" aria-label="Toggle ambient sound">
+        <span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="sound-label">Silence</span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-index">VOLUME I · BLUE–GREEN REVERIE</div>
+        <div class="hero-copy">
+          <p class="eyebrow reveal">AN INTERACTIVE DIGITAL HANDSCROLL · 2026</p>
+          <h1 id="hero-title" aria-label="Swallows across a thousand miles">
+            <span class="title-line"><i>Swallows</i></span>
+            <span class="title-line"><i>Across</i></span>
+            <span class="title-line title-accent"><i>A Thousand Miles</i></span>
+          </h1>
+          <p class="hero-note reveal">The mountains remain silent.<br />The swallows carry the wind.</p>
+        </div>
+
+        <div class="hero-painting" aria-hidden="true">
+          <img src="./assets/qianli-swallow-hero.png" alt="" />
+        </div>
+        <canvas id="swarmCanvas" aria-hidden="true"></canvas>
+        <div class="gesture-hint" aria-hidden="true"><span>MOVE TO<br />DISTURB</span><i></i></div>
+
+        <div class="seal" aria-hidden="true"><span>V</span><span>L</span></div>
+        <div class="vertical-poem" aria-hidden="true">
+          <span>DISTANT PEAKS HOLD BLUE</span><span>SPRING SWALLOWS CARRY WIND</span>
+        </div>
+        <a class="enter magnetic" href="#spirit"><span>UNROLL</span><i aria-hidden="true"></i></a>
+      </section>
+
+      <section class="opening" id="spirit" aria-labelledby="opening-title">
+        <div class="section-number">I</div>
+        <p class="opening-kicker reveal">SONG IS MORE THAN A DYNASTY.</p>
+        <h2 id="opening-title" class="split-reveal">It is the art of placing<br />everything <em>just so.</em></h2>
+        <div class="opening-aside reveal">
+          <span>EMPTINESS / RESONANCE / TRUTH</span>
+          <p>Less reveals more. Stillness makes motion visible. When the landscape steps back, the mind moves forward.</p>
+        </div>
+        <div class="orbit-word" aria-hidden="true">QUIET&nbsp;&nbsp;IS&nbsp;&nbsp;NOT&nbsp;&nbsp;EMPTY&nbsp;&nbsp;·&nbsp;&nbsp;</div>
+      </section>
+
+      <section class="poetry-field" id="poetry" aria-labelledby="poetry-title">
+        <div class="poetry-copy">
+          <p id="poetry-meta">POETRY IN MOTION · YAN SHU, 991–1055</p>
+          <h2 id="poetry-title" class="split-reveal in-view">A familiar swallow<br />returns through time.</h2>
+          <blockquote id="poetry-quote">
+            “There is nothing to be done—<br />the flowers fall away.<br />As if we had met before,<br />the swallows return.”
+          </blockquote>
+          <div class="poetry-actions">
+            <span>Move through the verse →<br />Press and sweep to stir the ink.</span>
+            <button class="poem-switch magnetic" type="button">
+              <span>NEXT POEM</span><i>01 / 03</i><b>↗</b>
+            </button>
+          </div>
+        </div>
+        <div class="poetry-stage">
+          <canvas id="poetryCanvas" aria-label="Interactive rendering of a classical Song poem"></canvas>
+          <div class="poetry-source" aria-hidden="true">浣溪沙 · 晏殊</div>
+          <div class="verse-translations" aria-hidden="true">
+            <span></span><span></span>
+          </div>
+          <div class="poetry-gesture" aria-hidden="true"><i></i><span>DISTURB<br />THE VERSE</span></div>
+        </div>
+      </section>
+
+      <section class="scroll-story" id="scroll" aria-label="Interactive landscape handscroll">
+        <div class="scroll-sticky">
+          <div class="scroll-track" aria-hidden="true"></div>
+          <div class="scroll-shade" aria-hidden="true"></div>
+          <div class="scroll-progress"><span></span><b>000</b></div>
+
+          <div class="chapter chapter-one is-active" data-chapter="0">
+            <p>SCENE I · MOUNTAINS</p>
+            <h2><span>Mineral blue rises.</span><br /><span>Ten thousand miles wake.</span></h2>
+          </div>
+          <div class="chapter chapter-two" data-chapter="1">
+            <p>SCENE II · SWALLOWS</p>
+            <h2><span>One wing passes.</span><br /><span>The whole scroll breathes.</span></h2>
+          </div>
+          <div class="chapter chapter-three" data-chapter="2">
+            <p>SCENE III · WITHIN</p>
+            <h2><span>The body stays outside.</span><br /><span>The mind enters the mountain.</span></h2>
+          </div>
+
+          <div class="swallow-flight" aria-hidden="true">
+            <svg viewBox="0 0 150 94" role="img">
+              <g class="bird-figure">
+                <path class="bird-wing bird-wing-left" d="M72 47C56 25 32 11 7 10c14 9 23 21 28 35 8-5 20-5 37 2Z" />
+                <path class="bird-wing bird-wing-right" d="M72 47C90 23 113 11 143 17c-17 6-29 17-37 32-9-5-20-6-34-2Z" />
+                <path class="bird-body" d="M62 42c8-7 19-6 27 1 7 6 6 18-2 26l-7 7-7-7c-10-9-18-19-11-27Z" />
+                <path class="bird-tail" d="m75 67-19 21 22-10 4 12 7-23Z" />
+                <circle class="bird-eye" cx="84" cy="45" r="1.8" />
+              </g>
+            </svg>
+            <span><b>SWALLOW</b><i></i>SCROLL GUIDE</span>
+          </div>
+          <span class="coordinate" aria-hidden="true">N 34° 16′ · E 108° 54′</span>
+        </div>
+      </section>
+
+      <section class="principles" aria-labelledby="principles-title">
+        <div class="principles-head">
+          <span>THREE WAYS OF SEEING</span>
+          <h2 id="principles-title" class="split-reveal">The landscape<br />has rules. The spirit<br />moves beyond them.</h2>
+          <p>Three quiet principles<br />of Song aesthetics.</p>
+        </div>
+
+        <div class="principle-list">
+          <article class="tilt-card">
+            <span class="principle-no">01</span>
+            <div><h3>Distance</h3><small>THE THREE PERSPECTIVES</small></div>
+            <p>High, deep and level distance. The eye follows the mountain; the mind discovers somewhere to go.</p>
+            <span class="line-bird" aria-hidden="true">↗</span>
+          </article>
+          <article class="tilt-card">
+            <span class="principle-no">02</span>
+            <div><h3>Restraint</h3><small>THE BEAUTY OF LESS</small></div>
+            <p>Colour does not shout. It settles through time and leaves behind a single measure of light.</p>
+            <span class="line-bird" aria-hidden="true">↗</span>
+          </article>
+          <article class="tilt-card">
+            <span class="principle-no">03</span>
+            <div><h3>Vitality</h3><small>THE BREATH OF THINGS</small></div>
+            <p>Still mountains, living water, flying swallows. Between motion and rest, the world breathes.</p>
+            <span class="line-bird" aria-hidden="true">↗</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="quote" aria-label="Quotation">
+        <div class="moon" aria-hidden="true"></div>
+        <div class="moon-ring" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-a" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-b" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-c" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-d" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-e" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-f" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-g" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-h" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-i" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-j" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-k" aria-hidden="true"></div>
+        <div class="orbital-dot orbit-l" aria-hidden="true"></div>
+        <p class="split-reveal">“A place to walk,<br />to behold, to wander,<br />and to dwell.”</p>
+        <span>— GUO XI, THE LOFTY MESSAGE OF FORESTS AND STREAMS</span>
+      </section>
+
+      <section class="colophon" id="colophon" aria-labelledby="colophon-title">
+        <p>END OF SCROLL · COLOPHON</p>
+        <h2 id="colophon-title" class="split-reveal">May you see the mountain—<br />and the self beyond it.</h2>
+        <a class="magnetic" href="#top">UNROLL AGAIN <span>↗</span></a>
+        <div class="signature">
+          <span>ART DIRECTION &amp; DESIGN</span>
+          <strong>Vivian Li</strong>
+          <small>© 2026 · SONG AESTHETICS</small>
+        </div>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
